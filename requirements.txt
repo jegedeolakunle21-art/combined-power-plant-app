@@ -3,7 +3,7 @@ pandas
 numpy
 scikit-learn
 joblib
-gdown
+gdown>=5.2.0
 requests
 plotly
 openpyxl
