@@ -70,18 +70,24 @@ def download_model(file_id, filename):
     url = f"https://drive.google.com/uc?id={file_id}"
 
     result = gdown.download(
-        url=url,
-        output=str(filepath),
-        quiet=False,
-        fuzzy=True
+        url,
+        str(filepath),
+        quiet=True
     )
 
-    if not result or not filepath.exists() or filepath.stat().st_size == 0:
+    if (
+        not result
+        or not filepath.exists()
+        or filepath.stat().st_size == 0
+    ):
         raise RuntimeError(
-            "Download failed. Check Google Drive sharing permissions."
+            "Google Drive download failed. "
+            "Check that the file is shared as "
+            "Anyone with the link – Viewer."
         )
 
     return str(filepath)
+
 
 
 # ==========================================
